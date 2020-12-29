@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Bill
+from bills.models import Bill
 
 
 class BillSerializer(serializers.ModelSerializer):
