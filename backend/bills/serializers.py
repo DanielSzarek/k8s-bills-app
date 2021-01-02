@@ -6,6 +6,7 @@ class BillSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bill
         fields = (
+            'id',
             'bill_type',
             'month_of_bill',
             'register_value',
