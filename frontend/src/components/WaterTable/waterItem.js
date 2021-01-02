@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 
 export default class WaterItem extends React.Component {
 
@@ -9,18 +8,18 @@ export default class WaterItem extends React.Component {
         this.state = {
             waterItem: props.data
         }
-        console.log(this.state)
+    }
+
+    onTrClick(id) {
+        this.props.history.push('/water/' + id);
     }
 
     render() {
         return (
-            <tr>
-                {/*<Link to={`/water/${this.state.waterItem.id}`} key={this.state.waterItem.id}*/}
-                {/*      style={{marginTop: "16px"}}>*/}
-                    <td>{this.state.waterItem.month_of_bill}</td>
-                    <td>{this.state.waterItem.register_value}</td>
-                    <td>{this.state.waterItem.bill_amount} zł</td>
-                {/*</Link>*/}
+            <tr onClick={this.onTrClick(this.state.waterItem.id)}>
+                <td>{this.state.waterItem.month_of_bill}</td>
+                <td>{this.state.waterItem.register_value}</td>
+                <td>{this.state.waterItem.bill_amount} zł</td>
             </tr>
         );
     }
