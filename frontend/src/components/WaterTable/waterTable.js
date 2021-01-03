@@ -9,7 +9,9 @@ export default class WaterTable extends React.Component {
         super(props, context);
 
         this.state = {
-            waterBills: []
+            waterBills: [],
+            sumOfRegisters: 0.0,
+            sumOfBills: 0.0
         }
     }
 
@@ -22,7 +24,16 @@ export default class WaterTable extends React.Component {
                     waterBills: data,
                     loaderState: false
                 });
+                console.log(data);
             })
+    }
+
+    sumOfRegisters() {
+        return this.state.waterBills.reduce((total, register) => total + register.register_value, 0.0);
+    }
+
+    sumOfBills() {
+        return this.state.waterBills.reduce((total, register) => total + parseFloat(register.bill_amount), 0.0);
     }
 
     render() {
@@ -41,7 +52,7 @@ export default class WaterTable extends React.Component {
                     <Table striped bordered hover>
                         <thead>
                         <tr>
-                            <th>Data</th>
+                            <th>Okres rozliczeniowy</th>
                             <th>Wartość licznika</th>
                             <th>Rachunek</th>
                         </tr>
@@ -50,6 +61,16 @@ export default class WaterTable extends React.Component {
                         {this.state.waterBills.map(waterItem =>
                             <WaterItem data={waterItem}/>
                         )}
+                        </tbody>
+                    </Table>
+
+                    <Table striped bordered>
+                        <tbody>
+                            <tr>
+                                <td>Podsumowanie</td>
+                                <td>{this.sumOfRegisters()}</td>
+                                <td>{this.sumOfBills().toFixed(2)} zł</td>
+                            </tr>
                         </tbody>
                     </Table>
                 </div>
