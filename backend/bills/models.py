@@ -16,7 +16,8 @@ class Bill(models.Model):
     add_date = models.DateTimeField(_("Data dodania"), auto_now_add=True)
     mod_date = models.DateTimeField(_("Data modyfikacji"), auto_now=True)
 
-    month_of_bill = models.DateField(_("Miesiąc rozliczeniowy"))
+    month_of_bill = models.PositiveSmallIntegerField(_("Miesiąc rozliczeniowy"))
+    year_of_bill = models.PositiveSmallIntegerField(_("Rok rozliczeniowy"))
     register_value = models.FloatField(_("Wartość licznika"))
     bill_amount = models.DecimalField(_("Wartość rachunku"), max_digits=6, decimal_places=2)
 
