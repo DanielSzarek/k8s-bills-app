@@ -9,8 +9,7 @@ export default class WaterTable extends React.Component {
         super(props, context);
 
         this.state = {
-            waterBills: [],
-            progressBarDisplayState: true,
+            waterBills: []
         }
     }
 
