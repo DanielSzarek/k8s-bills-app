@@ -13,7 +13,8 @@ export default class WaterTable extends React.Component {
         this.state = {
             waterBills: [],
             sumOfRegisters: 0.0,
-            sumOfBills: 0.0
+            sumOfBills: 0.0,
+            loaderState: true
         }
     }
 
@@ -26,7 +27,6 @@ export default class WaterTable extends React.Component {
                     waterBills: data,
                     loaderState: false
                 });
-                console.log(data);
             })
     }
 
@@ -48,7 +48,7 @@ export default class WaterTable extends React.Component {
                         color="#00BFFF"
                         height={100}
                         width={100}
-                        timeout={1000} //1 secs
+                        timeout={2000} //2 secs
                         visible={this.state.loaderState}
                     />
                     <Table striped bordered hover>
