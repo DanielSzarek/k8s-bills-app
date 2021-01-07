@@ -2,6 +2,8 @@ import React from 'react';
 import Loader from 'react-loader-spinner'
 import {Table} from "react-bootstrap";
 import WaterItem from "./waterItem";
+import {PlusCircle} from "react-bootstrap-icons";
+import {Link} from "react-router-dom";
 
 export default class WaterTable extends React.Component {
 
@@ -55,6 +57,7 @@ export default class WaterTable extends React.Component {
                             <th>Okres rozliczeniowy</th>
                             <th>Wartość licznika</th>
                             <th>Rachunek</th>
+                            <th><Link to={`/water-add`} style={{marginTop: "16px"}}><PlusCircle/></Link></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -63,14 +66,13 @@ export default class WaterTable extends React.Component {
                         )}
                         </tbody>
                     </Table>
-
                     <Table striped bordered>
                         <tbody>
-                            <tr>
-                                <td>Podsumowanie</td>
-                                <td>{this.sumOfRegisters()}</td>
-                                <td>{this.sumOfBills().toFixed(2)} zł</td>
-                            </tr>
+                        <tr>
+                            <td>Podsumowanie</td>
+                            <td>{this.sumOfRegisters()}</td>
+                            <td>{this.sumOfBills().toFixed(2)} zł</td>
+                        </tr>
                         </tbody>
                     </Table>
                 </div>
