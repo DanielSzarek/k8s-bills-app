@@ -8,7 +8,6 @@ export default class CurrencyItem extends React.Component {
         this.state = {
             rate: props.data
         }
-        console.log(this.state.rate)
     }
 
     render() {
