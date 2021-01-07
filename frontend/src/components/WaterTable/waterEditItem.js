@@ -13,10 +13,15 @@ class WaterEditItem extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+
+        this.url = process.env.BACKEND_URL;
+        if (this.url === undefined) {
+            this.url = "http://localhost:8080"
+        }
     }
 
     componentDidMount() {
-        fetch(`http://localhost:8080/bills/${this.state.id}/`)
+        fetch(`${this.url}/bills/${this.state.id}/`)
             .then(response => response.json())
             .then(data => {
                 this.setState({
@@ -50,7 +55,8 @@ class WaterEditItem extends React.Component {
         waterBill.register_value = this.state.registerValue;
         waterBill.bill_amount = this.state.billAmount;
 
-        fetch(`http://localhost:8080/bills/${this.state.id}/`, {
+
+        fetch(`${this.url}/bills/${this.state.id}/`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

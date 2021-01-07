@@ -12,11 +12,15 @@ class Currency extends React.Component {
             rates: [],
             loaderState: true
         }
+
+        this.url = process.env.API_NBP_URL;
+        if (this.url === undefined) {
+            this.url = "http://api.nbp.pl/api/exchangerates"
+        }
     }
 
     componentDidMount() {
-        // TODO Configuration for endpoint
-        fetch("http://api.nbp.pl/api/exchangerates/tables/A?format=json")
+        fetch(`${this.url}/tables/A?format=json`)
             .then(response => response.json())
             .then(data => {
                 this.setState({
@@ -34,19 +38,19 @@ class Currency extends React.Component {
                 </div>
                 <div>
                     <Loader className={"text-center"}
-                        type="Audio"
-                        color="#00BFFF"
-                        height={100}
-                        width={100}
-                        timeout={2000} //2 secs
-                        visible={this.state.loaderState}
+                            type="Audio"
+                            color="#00BFFF"
+                            height={100}
+                            width={100}
+                            timeout={2000} //2 secs
+                            visible={this.state.loaderState}
                     />
                     <ListGroup>
                         {
                             this.state.rates.map(rate =>
-                                <ListGroup.Item>
-                                    <CurrencyItem data={rate}/>
-                                </ListGroup.Item>
+                                    <ListGroup.Item>
+                                        <CurrencyItem data={rate}/>
+                                    </ListGroup.Item>
                             )
                         }
                     </ListGroup>
