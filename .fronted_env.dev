@@ -1,0 +1,2 @@
+BACKEND_URL=127.0.0.1:8080
+API_NBP_URL=http://api.nbp.pl/api/exchangerates

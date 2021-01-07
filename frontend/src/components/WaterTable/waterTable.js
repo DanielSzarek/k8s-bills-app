@@ -19,8 +19,11 @@ export default class WaterTable extends React.Component {
     }
 
     componentDidMount() {
-        // TODO Configuration for endpoint
-        fetch("http://localhost:8080/bills/")
+        let url = process.env.BACKEND_URL;
+        if (url === undefined) {
+            url = "http://localhost:8080"
+        }
+        fetch(`${url}/bills/`)
             .then(response => response.json())
             .then(data => {
                 this.setState({
