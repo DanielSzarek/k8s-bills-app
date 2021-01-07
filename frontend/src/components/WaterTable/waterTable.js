@@ -2,6 +2,8 @@ import React from 'react';
 import Loader from 'react-loader-spinner'
 import {Table} from "react-bootstrap";
 import WaterItem from "./waterItem";
+import {PlusCircle} from "react-bootstrap-icons";
+import {Link} from "react-router-dom";
 
 export default class WaterTable extends React.Component {
 
@@ -11,7 +13,8 @@ export default class WaterTable extends React.Component {
         this.state = {
             waterBills: [],
             sumOfRegisters: 0.0,
-            sumOfBills: 0.0
+            sumOfBills: 0.0,
+            loaderState: true
         }
     }
 
@@ -24,7 +27,6 @@ export default class WaterTable extends React.Component {
                     waterBills: data,
                     loaderState: false
                 });
-                console.log(data);
             })
     }
 
@@ -46,7 +48,7 @@ export default class WaterTable extends React.Component {
                         color="#00BFFF"
                         height={100}
                         width={100}
-                        timeout={1000} //1 secs
+                        timeout={2000} //2 secs
                         visible={this.state.loaderState}
                     />
                     <Table striped bordered hover>
@@ -55,6 +57,7 @@ export default class WaterTable extends React.Component {
                             <th>Okres rozliczeniowy</th>
                             <th>Wartość licznika</th>
                             <th>Rachunek</th>
+                            <th><Link to={`/water-add`} style={{marginTop: "16px"}}><PlusCircle/></Link></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -63,14 +66,13 @@ export default class WaterTable extends React.Component {
                         )}
                         </tbody>
                     </Table>
-
                     <Table striped bordered>
                         <tbody>
-                            <tr>
-                                <td>Podsumowanie</td>
-                                <td>{this.sumOfRegisters()}</td>
-                                <td>{this.sumOfBills().toFixed(2)} zł</td>
-                            </tr>
+                        <tr>
+                            <td>Podsumowanie</td>
+                            <td>{this.sumOfRegisters()}</td>
+                            <td>{this.sumOfBills().toFixed(2)} zł</td>
+                        </tr>
                         </tbody>
                     </Table>
                 </div>

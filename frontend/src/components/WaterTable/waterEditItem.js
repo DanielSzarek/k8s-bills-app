@@ -58,7 +58,7 @@ class WaterEditItem extends React.Component {
             body: JSON.stringify(waterBill)
         })
             .then(response => {
-                this.props.history.push(`/home/${this.state.id}`)
+                this.props.history.push(`/water/${this.state.id}`)
             });
     }
 
@@ -82,7 +82,7 @@ class WaterEditItem extends React.Component {
                                           value={this.state.billAmount}
                                           onChange={this.handleChange}></Form.Control>
                         </Form.Group>
-                        <Button variant="primary" type="submit">Edytuj post</Button>
+                        <Button variant="primary" type="submit">Edytuj</Button>
                     </Form>
                 </div>
             </div>

@@ -38,13 +38,20 @@
 }
 
 .footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+}
+
+footer {
     position: absolute;
     left: 0;
     bottom: 0;
     height: 30px;
     width: 100%;
     overflow: hidden;
-    background-color: #147ee0;
+    background-color: #178cf5;
     color: white;
     /*text-align: center;*/
 }
