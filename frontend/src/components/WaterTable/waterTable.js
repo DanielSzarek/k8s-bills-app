@@ -23,7 +23,7 @@ export default class WaterTable extends React.Component {
         if (url === undefined) {
             url = "http://localhost:8080"
         }
-        fetch(`${url}/bills/`)
+        fetch(`${url}/bills/?type=W`)
             .then(response => response.json())
             .then(data => {
                 this.setState({
