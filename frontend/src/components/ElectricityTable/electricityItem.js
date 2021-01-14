@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {PencilSquare} from 'react-bootstrap-icons';
 
-export default class WaterItem extends React.Component {
+export default class ElectricityItem extends React.Component {
 
     constructor(props, context) {
         super(props, context);
@@ -23,7 +23,7 @@ export default class WaterItem extends React.Component {
         }
 
         this.state = {
-            waterItem: props.data
+            electricityItem: props.data
         }
     }
 
@@ -34,10 +34,10 @@ export default class WaterItem extends React.Component {
     render() {
         return (
             <tr>
-                <td>{this.state.waterItem.year_of_bill} - {this.getMonth(this.state.waterItem.month_of_bill)}</td>
-                <td>{this.state.waterItem.register_value}</td>
-                <td>{this.state.waterItem.bill_amount} zł</td>
-                <td><Link to={`/water/${this.state.waterItem.id}`} key={this.state.waterItem.id}
+                <td>{this.state.electricityItem.year_of_bill} - {this.getMonth(this.state.electricityItem.month_of_bill)}</td>
+                <td>{this.state.electricityItem.register_value}</td>
+                <td>{this.state.electricityItem.bill_amount} zł</td>
+                <td><Link to={`/electricity/${this.state.electricityItem.id}`} key={this.state.electricityItem.id}
                           style={{marginTop: "16px"}}><PencilSquare/></Link></td>
             </tr>
         );

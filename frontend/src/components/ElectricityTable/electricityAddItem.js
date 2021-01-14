@@ -2,7 +2,7 @@ import React from "react";
 import {withRouter} from "react-router-dom";
 import {Button, Form} from "react-bootstrap";
 
-class WaterAddItem extends React.Component {
+class ElectricityAddItem extends React.Component {
 
     constructor(props, context) {
         super(props, context);
@@ -43,7 +43,7 @@ class WaterAddItem extends React.Component {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                bill_type: 'W',
+                bill_type: 'P',
                 month_of_bill: this.state.settlingPeriodMonth,
                 year_of_bill: this.state.settlingPeriodYear,
                 register_value: this.state.registerValue,
@@ -61,7 +61,7 @@ class WaterAddItem extends React.Component {
 
         return (
             <div>
-                <h1>Dodaj - woda</h1>
+                <h1>Dodaj - prąd</h1>
                 <div>
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Group>
@@ -76,7 +76,7 @@ class WaterAddItem extends React.Component {
                             <Form.Label>Rok</Form.Label>
                                 <Form.Control onChange={this.handleChange} name={"settlingPeriodYear"} as="select">
                                     {years.map((year, index) =>
-                                        <option value={index}>{year}</option>
+                                        <option value={year}>{year}</option>
                                     )}
                                 </Form.Control>
                         </Form.Group>
@@ -103,4 +103,4 @@ class WaterAddItem extends React.Component {
     }
 }
 
-export default withRouter(WaterAddItem)
+export default withRouter(ElectricityAddItem)
