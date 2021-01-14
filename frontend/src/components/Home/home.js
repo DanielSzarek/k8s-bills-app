@@ -1,6 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import WaterTable from "../WaterTable/waterTable";
+import ElectricityTable from "../ElectricityTable/electricityTable";
 
 class Home extends React.Component {
 
@@ -12,7 +13,7 @@ class Home extends React.Component {
                         <WaterTable/>
                     </div>
                     <div className={"col"}>
-                        <WaterTable/>
+                        <ElectricityTable/>
                     </div>
                 </div>
                 <footer className="footer footer-copyright text-center">
