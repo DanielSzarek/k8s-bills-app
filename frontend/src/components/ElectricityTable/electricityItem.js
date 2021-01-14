@@ -9,7 +9,7 @@ export default class ElectricityItem extends React.Component {
 
         this.months = {
             1: 'styczeń',
-            2: 'lity',
+            2: 'luty',
             3: 'marzec',
             4: 'kwiecień',
             5: 'maj',

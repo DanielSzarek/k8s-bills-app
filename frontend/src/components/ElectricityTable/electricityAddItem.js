@@ -66,7 +66,7 @@ class ElectricityAddItem extends React.Component {
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Group>
                             <Form.Label>Miesiąc</Form.Label>
-                                <Form.Control as="select">
+                                <Form.Control onChange={this.handleChange} name={"settlingPeriodMonth"} as="select">
                                     {months.map((month, index) =>
                                         <option value={index}>{month}</option>
                                     )}
@@ -74,9 +74,9 @@ class ElectricityAddItem extends React.Component {
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Rok</Form.Label>
-                                <Form.Control as="select">
+                                <Form.Control onChange={this.handleChange} name={"settlingPeriodYear"} as="select">
                                     {years.map((year, index) =>
-                                        <option value={index}>{year}</option>
+                                        <option value={year}>{year}</option>
                                     )}
                                 </Form.Control>
                         </Form.Group>
