@@ -5,10 +5,14 @@ WORKDIR /backend
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-
-RUN pip install --upgrade pip
+ENV DEBUG 1
+ENV DJANGO_ALLOWED_HOSTS *
 
 COPY ./requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . /backend/
+COPY . .
+
+EXPOSE 8080
+
+ENTRYPOINT ["bash", "entrypoint.sh"]
