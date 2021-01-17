@@ -31,6 +31,9 @@ export default class ElectricityTable extends React.Component {
                     loaderState: false
                 });
             })
+            .catch((error) => {
+                alert("Błąd połączenia z serwerem - prąd: " + error)
+            });
     }
 
     sumOfRegisters() {

@@ -30,6 +30,9 @@ class WaterEditItem extends React.Component {
                     billAmount: data.bill_amount
                 })
             })
+            .catch((error) => {
+                alert("Błąd połączenia z serwerem" + error)
+            });
     }
 
     handleChange(event) {
@@ -64,7 +67,11 @@ class WaterEditItem extends React.Component {
             body: JSON.stringify(waterBill)
         })
             .then(response => {
-                this.props.history.push(`/water/${this.state.id}`)
+                if (response.ok) {
+                    this.props.history.push('/')
+                } else {
+                    alert("Błąd podczas edycji!")
+                }
             });
     }
 

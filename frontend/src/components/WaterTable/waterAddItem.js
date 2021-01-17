@@ -51,12 +51,16 @@ class WaterAddItem extends React.Component {
             })
         })
             .then(response => {
-                this.props.history.push(`/`)
+                if (response.ok) {
+                    this.props.history.push(`/`)
+                } else {
+                    alert("Niepoprawne dane, sprawdź czy taka data już istnieje!")
+                }
             });
     }
 
     render() {
-        const  months = ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'];
+        const months = ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'];
         const years = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]
 
         return (
@@ -66,19 +70,19 @@ class WaterAddItem extends React.Component {
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Group>
                             <Form.Label>Miesiąc</Form.Label>
-                                <Form.Control onChange={this.handleChange} name={"settlingPeriodMonth"} as="select">
-                                    {months.map((month, index) =>
-                                        <option value={index}>{month}</option>
-                                    )}
-                                </Form.Control>
+                            <Form.Control onChange={this.handleChange} name={"settlingPeriodMonth"} as="select">
+                                {months.map((month, index) =>
+                                    <option value={index+1}>{month}</option>
+                                )}
+                            </Form.Control>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Rok</Form.Label>
-                                <Form.Control onChange={this.handleChange} name={"settlingPeriodYear"} as="select">
-                                    {years.map((year, index) =>
-                                        <option value={index}>{year}</option>
-                                    )}
-                                </Form.Control>
+                            <Form.Control onChange={this.handleChange} name={"settlingPeriodYear"} as="select">
+                                {years.map((year, index) =>
+                                    <option value={year}>{year}</option>
+                                )}
+                            </Form.Control>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Wartość licznika</Form.Label>

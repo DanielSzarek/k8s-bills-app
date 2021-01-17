@@ -31,6 +31,9 @@ export default class WaterTable extends React.Component {
                     loaderState: false
                 });
             })
+            .catch((error) => {
+                alert("Błąd połączenia z serwerem - woda : " + error)
+            });
     }
 
     sumOfRegisters() {
