@@ -23,3 +23,4 @@ class Bill(models.Model):
 
     class Meta:
         db_table = "bill"
+        unique_together = ("bill_type", "month_of_bill", "year_of_bill")

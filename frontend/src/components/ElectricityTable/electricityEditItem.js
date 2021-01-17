@@ -30,6 +30,9 @@ class ElectricityEditItem extends React.Component {
                     billAmount: data.bill_amount
                 })
             })
+            .catch((error) => {
+                alert("Błąd połączenia z serwerem - prąd: " + error)
+            });
     }
 
     handleChange(event) {
@@ -64,14 +67,18 @@ class ElectricityEditItem extends React.Component {
             body: JSON.stringify(electricityBill)
         })
             .then(response => {
-                this.props.history.push(`/electricity/${this.state.id}`)
+                if (response.ok) {
+                    this.props.history.push('/')
+                } else {
+                    alert("Błąd podczas edycji!")
+                }
             });
     }
 
     render() {
         return (
             <div>
-                <h1>Edycja - woda</h1>
+                <h1>Edycja - prąd</h1>
                 <div>
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Group>

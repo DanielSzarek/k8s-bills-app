@@ -7,7 +7,7 @@ from bills.serializers import BillSerializer
 
 class BillViewSet(viewsets.ModelViewSet):
     serializer_class = BillSerializer
-    queryset = Bill.objects.all().order_by('month_of_bill')
+    queryset = Bill.objects.all().order_by('year_of_bill', 'month_of_bill')
     permission_classes = [permissions.AllowAny]
 
     def list(self, request, *args, **kwargs):
@@ -17,6 +17,6 @@ class BillViewSet(viewsets.ModelViewSet):
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
-        queryset = Bill.objects.filter(bill_type=bill_type)
+        queryset = Bill.objects.filter(bill_type=bill_type).order_by('year_of_bill', 'month_of_bill')
         serializer = BillSerializer(queryset, many=True)
         return Response(serializer.data)
