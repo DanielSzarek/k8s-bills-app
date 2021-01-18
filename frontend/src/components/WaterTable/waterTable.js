@@ -19,13 +19,14 @@ export default class WaterTable extends React.Component {
     }
 
     componentDidMount() {
-        let url = process.env.BACKEND_URL;
+        let url = process.env.REACT_APP_BACKEND_URL;
         if (url === undefined) {
             url = "http://localhost:8080"
         }
         fetch(`${url}/bills/?type=W`)
             .then(response => response.json())
             .then(data => {
+                console.log(data);
                 this.setState({
                     waterBills: data,
                     loaderState: false

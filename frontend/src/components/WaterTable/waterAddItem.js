@@ -37,7 +37,11 @@ class WaterAddItem extends React.Component {
             return;
         }
 
-        fetch(`http://localhost:8080/bills/`, {
+        let url = process.env.REACT_APP_BACKEND_URL;
+        if (url === undefined) {
+            url = "http://localhost:8080"
+        }
+        fetch(`${url}/bills/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
