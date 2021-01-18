@@ -19,7 +19,7 @@ export default class ElectricityTable extends React.Component {
     }
 
     componentDidMount() {
-        let url = process.env.BACKEND_URL;
+        let url = process.env.REACT_APP_BACKEND_URL;
         if (url === undefined) {
             url = "http://localhost:8080"
         }

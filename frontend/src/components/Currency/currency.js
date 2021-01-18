@@ -13,7 +13,7 @@ class Currency extends React.Component {
             loaderState: true
         }
 
-        this.url = process.env.API_NBP_URL;
+        this.url = process.env.REACT_APP_API_NBP_URL;
         if (this.url === undefined) {
             this.url = "http://api.nbp.pl/api/exchangerates"
         }
