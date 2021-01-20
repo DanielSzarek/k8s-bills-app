@@ -13,8 +13,9 @@ class WaterEditItem extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.onDeleteClick = this.onDeleteClick.bind(this);
 
-        this.url = process.env.BACKEND_URL;
+        this.url = process.env.REACT_APP_BACKEND_URL;
         if (this.url === undefined) {
             this.url = "http://localhost:8080"
         }
@@ -75,6 +76,22 @@ class WaterEditItem extends React.Component {
             });
     }
 
+    onDeleteClick() {
+        fetch(`${this.url}/bills/${this.state.id}/`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then(response => {
+                if (response.ok) {
+                    this.props.history.push('/')
+                } else {
+                    alert("Błąd podczas usuwania!")
+                }
+            });
+    }
+
     render() {
         return (
             <div>
@@ -95,7 +112,10 @@ class WaterEditItem extends React.Component {
                                           value={this.state.billAmount}
                                           onChange={this.handleChange}></Form.Control>
                         </Form.Group>
-                        <Button variant="primary" type="submit">Edytuj</Button>
+                        <Button variant="primary" type="submit"
+                                style={{position: "absolute", left: "15px"}}>Edytuj</Button>
+                        <Button variant="danger" onClick={() => { if (window.confirm('Czy na pewno chcesz usunąc ten wpis?')) this.onDeleteClick() } }
+                                style={{position: "absolute", left: "100px"}}>Usuń</Button>
                     </Form>
                 </div>
             </div>
