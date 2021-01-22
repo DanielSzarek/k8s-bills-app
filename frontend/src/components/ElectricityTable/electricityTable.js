@@ -23,7 +23,12 @@ export default class ElectricityTable extends React.Component {
         if (url === undefined) {
             url = "http://localhost:8080"
         }
-        fetch(`${url}/bills/?type=P`)
+        fetch(`${url}/bills/?type=P`, {
+            headers: new Headers({
+                'Connection': 'close',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }),
+        })
             .then(response => response.json())
             .then(data => {
                 this.setState({
@@ -68,7 +73,7 @@ export default class ElectricityTable extends React.Component {
                         </thead>
                         <tbody>
                         {this.state.electricityBills.map(electricityItem =>
-                            <ElectricityItem data={electricityItem}/>
+                            <ElectricityItem key={electricityItem.id} data={electricityItem}/>
                         )}
                         </tbody>
                     </Table>

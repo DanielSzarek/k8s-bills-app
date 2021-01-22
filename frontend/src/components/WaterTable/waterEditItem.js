@@ -9,7 +9,9 @@ class WaterEditItem extends React.Component {
 
         this.state = {
             id: this.props.match.params.id,
-            waterBill: {}
+            waterBill: {},
+            registerValue: 1,
+            billAmount: ""
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,7 +24,12 @@ class WaterEditItem extends React.Component {
     }
 
     componentDidMount() {
-        fetch(`${this.url}/bills/${this.state.id}/`)
+        fetch(`${this.url}/bills/${this.state.id}/`, {
+            headers: new Headers({
+                "Connection": "close",
+                "Content-Type": "application/x-www-form-urlencoded"
+            }),
+        })
             .then(response => response.json())
             .then(data => {
                 this.setState({
@@ -64,6 +71,7 @@ class WaterEditItem extends React.Component {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
+                "Connection": "close"
             },
             body: JSON.stringify(waterBill)
         })
@@ -81,6 +89,7 @@ class WaterEditItem extends React.Component {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
+                "Connection": "close"
             },
         })
             .then(response => {
@@ -114,7 +123,9 @@ class WaterEditItem extends React.Component {
                         </Form.Group>
                         <Button variant="primary" type="submit"
                                 style={{position: "absolute", left: "15px"}}>Edytuj</Button>
-                        <Button variant="danger" onClick={() => { if (window.confirm('Czy na pewno chcesz usunąc ten wpis?')) this.onDeleteClick() } }
+                        <Button variant="danger" onClick={() => {
+                            if (window.confirm('Czy na pewno chcesz usunąc ten wpis?')) this.onDeleteClick()
+                        }}
                                 style={{position: "absolute", left: "100px"}}>Usuń</Button>
                     </Form>
                 </div>
