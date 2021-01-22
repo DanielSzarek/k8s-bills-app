@@ -23,10 +23,14 @@ export default class WaterTable extends React.Component {
         if (url === undefined) {
             url = "http://localhost:8080"
         }
-        fetch(`${url}/bills/?type=W`)
+        fetch(`${url}/bills/?type=W`, {
+            headers: new Headers({
+                'Connection': 'close',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }),
+        })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 this.setState({
                     waterBills: data,
                     loaderState: false
@@ -69,7 +73,7 @@ export default class WaterTable extends React.Component {
                         </thead>
                         <tbody>
                         {this.state.waterBills.map(waterItem =>
-                            <WaterItem data={waterItem}/>
+                            <WaterItem key={waterItem.id} data={waterItem}/>
                         )}
                         </tbody>
                     </Table>
