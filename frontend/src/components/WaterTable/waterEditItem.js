@@ -101,42 +101,38 @@ class WaterEditItem extends React.Component {
             });
     }
 
-        render()
-        {
-            return (
+    render() {
+        return (
+            <div>
+                <h1>Edycja - woda</h1>
                 <div>
-                    <h1>Edycja - woda</h1>
-                    <div>
-                        <Form onSubmit={this.handleSubmit}>
-                            <Form.Group>
-                                <Form.Label>Wartość licznika</Form.Label>
-                                <Form.Control type={"number"} step={0.001} name={"registerValue"}
-                                              placeholder={"Edytuj wartość licznika"}
-                                              value={this.state.registerValue}
-                                              onChange={this.handleChange}></Form.Control>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Wartość rachunku</Form.Label>
-                                <Form.Control type={"number"} step={0.01} name={"billAmount"}
-                                              placeholder={"Edytuj wartość rachunku"}
-                                              value={this.state.billAmount}
-                                              onChange={this.handleChange}></Form.Control>
-                            </Form.Group>
-                            <Button variant="primary" type="submit"
-                                    style={{position: "absolute", left: "15px"}}>Edytuj</Button>
-                            <Button variant="danger" onClick={() => {
-                                if (window.confirm('Czy na pewno chcesz usunąc ten wpis?')) this.onDeleteClick()
-                            }}
-                                    style={{position: "absolute", left: "100px"}}>Usuń</Button>
-                        </Form>
-                    </div>
+                    <Form onSubmit={this.handleSubmit}>
+                        <Form.Group>
+                            <Form.Label>Wartość licznika</Form.Label>
+                            <Form.Control type={"number"} step={0.001} name={"registerValue"}
+                                          placeholder={"Edytuj wartość licznika"}
+                                          value={this.state.registerValue}
+                                          onChange={this.handleChange}></Form.Control>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Wartość rachunku</Form.Label>
+                            <Form.Control type={"number"} step={0.01} name={"billAmount"}
+                                          placeholder={"Edytuj wartość rachunku"}
+                                          value={this.state.billAmount}
+                                          onChange={this.handleChange}></Form.Control>
+                        </Form.Group>
+                        <Button variant="primary" type="submit"
+                                style={{position: "absolute", left: "15px"}}>Edytuj</Button>
+                        <Button variant="danger" onClick={() => {
+                            if (window.confirm('Czy na pewno chcesz usunąc ten wpis?')) this.onDeleteClick()
+                        }}
+                                style={{position: "absolute", left: "100px"}}>Usuń</Button>
+                    </Form>
                 </div>
+            </div>
 
-            );
-        }
+        );
     }
+}
 
-    export
-    default
-
-    withRouter(WaterEditItem);
+export default withRouter(WaterEditItem);
