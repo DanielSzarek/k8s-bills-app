@@ -9,7 +9,7 @@ class ElectricityAddItem extends React.Component {
 
         this.state = {
             settlingPeriodMonth: 1,
-            settlingPeriodYear: 2021,
+            settlingPeriodYear: 2015,
             registerValue: 0.0,
             billAmount: 0.0
         }
@@ -45,6 +45,7 @@ class ElectricityAddItem extends React.Component {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "Connection": "close"
             },
             body: JSON.stringify({
                 bill_type: 'P',
@@ -76,7 +77,7 @@ class ElectricityAddItem extends React.Component {
                             <Form.Label>Miesiąc</Form.Label>
                                 <Form.Control onChange={this.handleChange} name={"settlingPeriodMonth"} as="select">
                                     {months.map((month, index) =>
-                                        <option value={index+1}>{month}</option>
+                                        <option key={index} value={index+1}>{month}</option>
                                     )}
                                 </Form.Control>
                         </Form.Group>
@@ -84,7 +85,7 @@ class ElectricityAddItem extends React.Component {
                             <Form.Label>Rok</Form.Label>
                                 <Form.Control onChange={this.handleChange} name={"settlingPeriodYear"} as="select">
                                     {years.map((year, index) =>
-                                        <option value={year}>{year}</option>
+                                        <option key={year} value={year}>{year}</option>
                                     )}
                                 </Form.Control>
                         </Form.Group>

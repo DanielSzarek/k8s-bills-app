@@ -9,8 +9,11 @@ class ElectricityEditItem extends React.Component {
 
         this.state = {
             id: this.props.match.params.id,
-            electricityBill: {}
+            electricityBill: {},
+            registerValue: 1,
+            billAmount: ""
         }
+
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onDeleteClick = this.onDeleteClick.bind(this);
@@ -22,7 +25,12 @@ class ElectricityEditItem extends React.Component {
     }
 
     componentDidMount() {
-        fetch(`${this.url}/bills/${this.state.id}/`)
+        fetch(`${this.url}/bills/${this.state.id}/`, {
+            headers: new Headers({
+                'Connection': 'close',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }),
+        })
             .then(response => response.json())
             .then(data => {
                 this.setState({
@@ -64,6 +72,7 @@ class ElectricityEditItem extends React.Component {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
+                "Connection": "close"
             },
             body: JSON.stringify(electricityBill)
         })
@@ -81,6 +90,7 @@ class ElectricityEditItem extends React.Component {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
+                "Connection": "close"
             },
         })
             .then(response => {
