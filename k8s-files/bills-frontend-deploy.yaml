@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: bills-frontend-deploy
+  name: bills-frontend-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bills-frontend-deploy
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: bills-frontend-deploy
+    spec:
+      containers:
+      - image: image-registry.openshift-image-registry.svc:5000/labproj11/frontend:1.4
+        name: frontend
+        resources: {}
+        envFrom:
+        - configMapRef:
+            name: bills-frontend-cmap
+status: {}

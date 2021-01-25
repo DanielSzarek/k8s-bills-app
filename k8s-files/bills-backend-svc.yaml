@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2021-01-18T08:45:32Z"
+  labels:
+    app: bills-backend-deploy
+  name: bills-backend-svc
+  namespace: labproj11
+  resourceVersion: "173316040"
+  selfLink: /api/v1/namespaces/labproj11/services/bills-backend-svc
+  uid: 57bd5ba0-7f47-4fd0-b7a0-68dc445b4748
+spec:
+  clusterIP: 172.30.117.137
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: bills-backend-deploy
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
