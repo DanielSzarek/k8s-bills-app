@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2021-01-18T09:25:39Z"
+  labels:
+    app: bills-frontend-deploy
+  name: bills-frontend-svc
+  namespace: labproj11
+  resourceVersion: "173344114"
+  selfLink: /api/v1/namespaces/labproj11/services/bills-frontend-svc
+  uid: 8c2e4ac5-cdc6-4f06-8123-41422fa13773
+spec:
+  clusterIP: 172.30.34.113
+  ports:
+  - port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: bills-frontend-deploy
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

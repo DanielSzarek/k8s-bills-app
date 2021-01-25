@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: bills-backend-deploy
+  name: bills-backend-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bills-backend-deploy
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: bills-backend-deploy
+    spec:
+      containers:
+      - image: image-registry.openshift-image-registry.svc:5000/labproj11/backend:1.2
+        name: backend
+        resources: {}
+        envFrom:
+        - configMapRef:
+            name: bills-backend-cmap
+        - secretRef:
+            name: bills-backend-secret
+status: {}
